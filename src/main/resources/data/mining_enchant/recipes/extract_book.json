@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "XBX",
+    "BSB",
+    "XBX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:obsidian"
+    },
+    "B": {
+      "item": "minecraft:glass"
+    },
+    "S": {
+      "item": "minecraft:dragon_breath"
+    }
+  },
+  "result": {
+    "item":"mining_enchant:extract_book"
+  },
+  "show_notification": true
+}

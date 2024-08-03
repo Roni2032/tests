@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side" : "mining_enchant:block/extract_book",
+    "end" : "mining_enchant:block/extract_book_top"
+  }
+}
