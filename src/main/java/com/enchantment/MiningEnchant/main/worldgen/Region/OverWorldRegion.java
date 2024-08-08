@@ -25,8 +25,7 @@ public class OverWorldRegion extends Region {
         new ParameterUtils.ParameterPointListBuilder()
                 //生成される土地の種類(INLAND : 島 COAST : 海　等)
                 .continentalness(ParameterUtils.Continentalness.INLAND)
-                //バイオームに適応されるY軸の高さ(今回はすべて)
-                .depth(ParameterUtils.Depth.FULL_RANGE)
+                .depth(ParameterUtils.Depth.SURFACE)
                 .build().forEach(point -> builder.add(point, ModBiomes.STRENGTH_FOREST));
 
         builder.build().forEach(mapper);

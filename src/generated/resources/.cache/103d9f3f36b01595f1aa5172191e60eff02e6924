@@ -1,0 +1,4 @@
+// 1.20.1	2024-08-04T18:48:08.0820234	Registries
+9e35e788780375e3c67d1d4a72bf603756c2bdaf data/mining_enchant/worldgen/biome/strength_forest.json
+6a19a20b9a52c1cd227dd0d9f7f379ed69ca2e48 data/mining_enchant/worldgen/configured_feature/strength_tree.json
+a221c03e3faf4695745bb9e696ffb16ac5838be0 data/mining_enchant/worldgen/placed_feature/strength_tree.json

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "mining_enchant:block/strength_log_top",
+    "side": "mining_enchant:block/strength_log_side"
+  }
+}

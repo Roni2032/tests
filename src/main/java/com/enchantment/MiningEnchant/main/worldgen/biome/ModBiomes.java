@@ -1,6 +1,7 @@
 package com.enchantment.MiningEnchant.main.worldgen.biome;
 
 import com.enchantment.MiningEnchant.main.MiningEnchant;
+import com.enchantment.MiningEnchant.main.worldgen.Placements.StrengthTreePlacement;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -12,6 +13,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class ModBiomes {
     public static final ResourceKey<Biome> STRENGTH_FOREST = ResourceKey.create(Registries.BIOME,new ResourceLocation(MiningEnchant.MOD_ID,"strength_forest"));
@@ -34,14 +36,17 @@ public class ModBiomes {
     private static Biome strengthForest(BootstapContext<Biome> context) {
         // モブのスポーンの設定
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        //spawnBuilder.addSpawn(MobCategory.MONSTER,
-          //      new MobSpawnSettings.SpawnerData(
-            //            EntityType.ZOMBIE, 100, 4, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER,
+                new MobSpawnSettings.SpawnerData(
+                        EntityType.ZOMBIE, 100, 4, 4));
 
         // ヒツジなど
 //        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         // ゾンビ、スケルトン、クリーパーなど
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+
 
         // Carver：渓谷や洞窟を設置するもの
         BiomeGenerationSettings.Builder biomeBuilder =
@@ -54,12 +59,14 @@ public class ModBiomes {
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addExtraGold(biomeBuilder);
 
+
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+
         // かぼちゃ、サトウキビ
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         // 呪われた木
-       //biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-               // IntroductionPlacement.CURSED_TREE);
+       biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+               StrengthTreePlacement.STRENGTH_TREE);
 
         return new Biome.BiomeBuilder()
                 // 雨が降るかどうか
@@ -79,7 +86,7 @@ public class ModBiomes {
                         .grassColorOverride(3488597)
                         .foliageColorOverride(14222332)
                         .fogColor(10854566)
-                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.00625F))
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.ENCHANT, 0.00625F))
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BADLANDS))
                         .build())

@@ -2,6 +2,7 @@ package com.enchantment.MiningEnchant.main;
 
 import com.enchantment.MiningEnchant.main.Item.Coin;
 import com.enchantment.MiningEnchant.main.Item.EnchantmentLevelUpItem;
+import com.enchantment.MiningEnchant.main.Item.ExplodeCortingNuget;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -12,6 +13,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,MiningEnchant.MOD_ID);
 
     public static final RegistryObject<Item> LEVEL_UP_STICK = ITEMS.register("level_up_stick", EnchantmentLevelUpItem::new);
+
+    public static final RegistryObject<Item> COATING_NUGET = ITEMS.register("coating_nuget", ExplodeCortingNuget::new);
 
     public static final RegistryObject<Item> CHIP_100 = ITEMS.register("chip_100",()->new Coin(null));
     public static final RegistryObject<Item> CHIP_50 = ITEMS.register("chip_50",()->new Coin((Coin) CHIP_100.get().asItem()));

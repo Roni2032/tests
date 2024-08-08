@@ -3,13 +3,18 @@
 
   "enchantment.mining_enchant.mineall" : "Miner",
   "enchantment.mining_enchant.critical" : "クリティカル",
+
   "item.mining_enchant.level_up_stick" : "エンチャントのレベル上げるやつ",
-  "block.mining_enchant.extract_book" : "エンチャント抽出器",
   "item.mining_enchant.chip_1" : "チップ(1)",
   "item.mining_enchant.chip_5" : "チップ(5)",
   "item.mining_enchant.chip_10" : "チップ(10)",
   "item.mining_enchant.chip_50" : "チップ(50)",
   "item.mining_enchant.chip_100" : "チップ(100)",
+
+  "block.mining_enchant.extract_book" : "エンチャント抽出器",
+  "block.mining_enchant.strength_log" : "強化の原木",
+  "block.mining_enchant.strength_leave" : "強化の葉",
+
 
   "container.mining_enchant.extractBook" : "抽出",
   "container.mining_enchant.inventory" : "インベントリ"

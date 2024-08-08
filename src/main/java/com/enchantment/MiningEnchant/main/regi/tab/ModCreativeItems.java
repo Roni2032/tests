@@ -15,6 +15,10 @@ public class ModCreativeItems {
             ModItems.CHIP_5.get(),
             ModItems.CHIP_10.get(),
             ModItems.CHIP_50.get(),
-            ModItems.CHIP_100.get()
+            ModItems.CHIP_100.get(),
+            ModBlocks.Items.STRENGTH_LOG_ITEM.get(),
+            ModBlocks.Items.STRENGTH_LEAVE_ITEM.get(),
+            ModBlocks.Items.STRENGTH_SAPLING_ITEM.get(),
+            ModItems.COATING_NUGET.get()
     };
 }

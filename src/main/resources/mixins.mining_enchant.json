@@ -10,6 +10,8 @@
     "BossEntityBase",
     "LivingEntityMixin",
     "Attribute.AccecerAttributeRange",
+    "Attribute.AcceserBlockBehaviour",
+    "BlockState.IForgeBlockStateMixin",
     "Boss.EnderDragon.BossDragonFireBall",
     "Boss.EnderDragon.BossEnderDragon",
     "Boss.EnderDragon.Phase.DragonFlamingMixin",
