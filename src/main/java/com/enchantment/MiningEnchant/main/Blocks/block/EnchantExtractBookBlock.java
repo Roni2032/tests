@@ -27,7 +27,7 @@ public class EnchantExtractBookBlock extends BaseEntityBlock {
 
     private EnchantExtractBookEntity blockEntity;
     public EnchantExtractBookBlock() {
-        super(Properties.of().strength(3.0f));
+        super(Properties.of().strength(5.0f).explosionResistance(200.0f));
     }
 
     @Nullable

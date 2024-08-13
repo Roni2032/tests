@@ -54,6 +54,7 @@ public class MiningEnchant{
         ModBlocks.Items.BLOCK_ITEMS.register(bus);
         ModBlocks.Blocks.BLOCKS.register(bus);
         ModMenuTypes.MENU_TYPES.register(bus);
+        ModEntites.ENTITY_TYPES.register(bus);
 
     }
 

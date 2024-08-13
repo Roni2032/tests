@@ -1,11 +1,12 @@
 package com.enchantment.MiningEnchant.main.event;
 
+import com.enchantment.MiningEnchant.main.Blocks.block.ResistStrengthMobBlock;
 import com.enchantment.MiningEnchant.main.MiningEnchant;
 import com.enchantment.MiningEnchant.main.ModItems;
 import com.enchantment.MiningEnchant.main.mixin.Attribute.AccecerAttributeRange;
-import com.enchantment.MiningEnchant.main.mixin.LivingEntityMixin;
 import com.enchantment.MiningEnchant.main.worldgen.biome.ModBiomes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -14,23 +15,24 @@ import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.OnDatapackSyncEvent;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.*;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.sql.Time;
-import java.util.Objects;
 import java.util.Random;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid =MiningEnchant.MOD_ID,bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class BossEntityEvents {
+
 
     @SubscribeEvent
     public static void tick(LivingEvent.LivingTickEvent event) {
@@ -61,17 +63,14 @@ public class BossEntityEvents {
                     entity.setHealth(entity.getHealth() + entity.getMaxHealth() / 1000.0f);
                 }
             }
-        }else{
-            if(entity instanceof EnderDragon || entity instanceof  WitherBoss){
-                PowerUp(entity,true);
+        }else {
+            if (entity instanceof EnderDragon || entity instanceof WitherBoss) {
+                PowerUp(entity, true,null);
             }
-            Attribute attribute = entity.getAttribute(Attributes.MAX_HEALTH).getAttribute();
-            if (attribute instanceof RangedAttribute) {
-                AccecerAttributeRange range = (AccecerAttributeRange) attribute;
-                var max =  range.getMaxValue();
-                if(max == 32768.0){
-                    entity.getEntityData().set(MiningEnchant.STRENGTH_MOB,true);
-                }
+            AttributeInstance attribute = entity.getAttribute(Attributes.MAX_HEALTH);
+            double max = attribute.getValue();
+            if (max == 100.0f) {
+                entity.getEntityData().set(MiningEnchant.STRENGTH_MOB, true);
             }
         }
     }
@@ -129,9 +128,17 @@ public class BossEntityEvents {
     @SubscribeEvent
     public static void spawnEvent(MobSpawnEvent.FinalizeSpawn event){
         Entity entity = event.getEntity();
-        if(entity == null) return;
-        if(entity instanceof Animal) return;
-        if(!(entity instanceof Mob)) return;
+        if(!canSpawnBoss(entity)) return;
+
+        BlockPos spawnBlockPos = new BlockPos(entity.getBlockX(),entity.getBlockY(),entity.getBlockZ());
+        for(BlockPos pos : ResistStrengthMobBlock.worldInBlocks){
+            Vec3 diff = new Vec3(
+                    spawnBlockPos.getX() - pos.getX(),
+                    spawnBlockPos.getY() - pos.getY(),
+                    spawnBlockPos.getZ() - pos.getZ()
+            );
+            if(diff.length() < ResistStrengthMobBlock.RESIST_AREA) return;
+        }
 
         Level world = entity.level();
         float odds = 0.0f;
@@ -141,7 +148,7 @@ public class BossEntityEvents {
             case NORMAL ->  odds = 2.0f;
             case HARD ->    odds = 4.0f;
         }
-        var biome = event.getLevel().getBiome(new BlockPos(entity.getBlockX(),entity.getBlockY(),entity.getBlockZ()));
+        var biome = event.getLevel().getBiome(spawnBlockPos);
         if(biome.is(ModBiomes.STRENGTH_FOREST)){
             odds = 75.0f;
         }
@@ -150,15 +157,22 @@ public class BossEntityEvents {
         }
 
         if(entity instanceof EnderDragon || entity instanceof WitherBoss){
-            PowerUp(entity,true);
+            PowerUp(entity,true,biome);
         }else{
             if(new Random().nextFloat(100) < odds){
-                PowerUp(entity,false);
+                PowerUp(entity,false,biome);
             }
         }
     }
 
-    public static void PowerUp(Entity entity,boolean vanillaBoss){
+
+    public static boolean canSpawnBoss(Entity entity){
+        if(entity == null) return false;
+        if(!(entity instanceof Enemy)) return false;
+
+        return true;
+    }
+    public static void PowerUp(Entity entity, boolean vanillaBoss, Holder<Biome> spawnBiome){
         ((Mob)entity).getEntityData().set(MiningEnchant.STRENGTH_MOB,true);
         LivingEntity mob = (LivingEntity) entity;
         Attribute attribute = mob.getAttribute(Attributes.MAX_HEALTH).getAttribute();
@@ -176,15 +190,16 @@ public class BossEntityEvents {
         mob.addEffect(new MobEffectInstance(MobEffects.REGENERATION, MobEffectInstance.INFINITE_DURATION));
         mob.addEffect(new MobEffectInstance(MobEffects.GLOWING, MobEffectInstance.INFINITE_DURATION));
 
-        SetAttribute(mob,Attributes.MAX_HEALTH, MiningEnchant.BOSS_HP_RATE);
-        SetAttribute(mob,Attributes.ATTACK_DAMAGE, MiningEnchant.BOSS_ATTACK_RATE);
-        SetAttribute(mob,Attributes.ARMOR, MiningEnchant.BOSS_ARMOR_RATE);
-        SetAttribute(mob,Attributes.MOVEMENT_SPEED, MiningEnchant.BOSS_MOVE_SPEED_RATE);
-        SetAttribute(mob,Attributes.ATTACK_SPEED, MiningEnchant.BOSS_ATTACK_SPEED_RATE);
+        SetAttribute(mob,Attributes.MAX_HEALTH, MiningEnchant.BOSS_HP_RATE,spawnBiome);
+        SetAttribute(mob,Attributes.ATTACK_DAMAGE, MiningEnchant.BOSS_ATTACK_RATE,spawnBiome);
+        SetAttribute(mob,Attributes.ARMOR, MiningEnchant.BOSS_ARMOR_RATE,spawnBiome);
+        SetAttribute(mob,Attributes.MOVEMENT_SPEED, MiningEnchant.BOSS_MOVE_SPEED_RATE,spawnBiome);
+        SetAttribute(mob,Attributes.ATTACK_SPEED, MiningEnchant.BOSS_ATTACK_SPEED_RATE,spawnBiome);
+
         if (vanillaBoss) {
-            SetAttribute(mob,Attributes.FOLLOW_RANGE, MiningEnchant.BOSS_FOLLOW_RATE);
+            SetAttribute(mob,Attributes.FOLLOW_RANGE, MiningEnchant.BOSS_FOLLOW_RATE,spawnBiome);
         } else {
-            SetAttribute(mob,Attributes.FOLLOW_RANGE, 0);
+            SetAttribute(mob,Attributes.FOLLOW_RANGE, 0,spawnBiome);
         }
 
         SetSlot(mob,EquipmentSlot.OFFHAND, Items.TOTEM_OF_UNDYING, 50.0f);
@@ -212,10 +227,16 @@ public class BossEntityEvents {
     }
 
 
-    private static void SetAttribute(LivingEntity entity,Attribute attribute, double rate) {
+    private static void SetAttribute(LivingEntity entity,Attribute attribute, double rate,Holder<Biome> spawnBiome) {
         AttributeInstance instance = entity.getAttribute(attribute);
 
         if (instance != null) {
+            if(spawnBiome.is(ModBiomes.STRENGTH_FOREST)){
+                rate *= 0.8;
+                if(rate <= 1.0){
+                    rate = 1.5;
+                }
+            }
             double value = instance.getValue();
             if (value <= 0) value = 1.0;
             if(attribute == Attributes.ARMOR){

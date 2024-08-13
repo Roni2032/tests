@@ -36,7 +36,7 @@ public abstract class ModdingCreeper {
     @Shadow private int swell;
     @Final @Shadow private static final EntityDataAccessor<Boolean> DATA_IS_IGNITED = SynchedEntityData.defineId(Creeper.class, EntityDataSerializers.BOOLEAN);
 
-    protected void spawnLingeringCloud() {
+    protected void bossSpawnLingeringCloud() {
 
         MobEffect[] effects = new MobEffect[]{
                 MobEffects.HUNGER,
@@ -73,7 +73,7 @@ public abstract class ModdingCreeper {
                 float radius = (float) explosionRadius * 3;
 
                 forge_MiningEnchantment_1_20_1$self().level().explode(forge_MiningEnchantment_1_20_1$self(), forge_MiningEnchantment_1_20_1$self().getX(), forge_MiningEnchantment_1_20_1$self().getY(), forge_MiningEnchantment_1_20_1$self().getZ(), radius * $$0, Level.ExplosionInteraction.MOB);
-                this.spawnLingeringCloud();
+                this.bossSpawnLingeringCloud();
 
                 swell = 0;
                 forge_MiningEnchantment_1_20_1$self().getEntityData().set(DATA_IS_IGNITED, false);

@@ -39,7 +39,7 @@ public abstract class BossEntityBase {
      */
     @Overwrite
     protected boolean isSunBurnTick() {
-        if (forge_MiningEnchantment_1_20_1$isBoss) return false;
+        if (forge_MiningEnchantment_1_20_1$self().getEntityData().get(MiningEnchant.STRENGTH_MOB)) return false;
 
         if (forge_MiningEnchantment_1_20_1$self().level().isDay() && !forge_MiningEnchantment_1_20_1$self().level().isClientSide) {
             float f = forge_MiningEnchantment_1_20_1$self().getLightLevelDependentMagicValue();

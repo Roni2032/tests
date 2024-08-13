@@ -4,6 +4,8 @@ import com.enchantment.MiningEnchant.main.Item.Coin;
 import com.enchantment.MiningEnchant.main.Item.EnchantmentLevelUpItem;
 import com.enchantment.MiningEnchant.main.Item.ExplodeCortingNuget;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -21,6 +23,5 @@ public class ModItems {
     public static final RegistryObject<Item> CHIP_10 = ITEMS.register("chip_10",()->new Coin((Coin) CHIP_50.get().asItem()));
     public static final RegistryObject<Item> CHIP_5 = ITEMS.register("chip_5",()->new Coin((Coin) CHIP_10.get().asItem()));
     public static final RegistryObject<Item> CHIP_1 = ITEMS.register("chip_1",()->new Coin((Coin) CHIP_5.get().asItem()));
-
 
 }

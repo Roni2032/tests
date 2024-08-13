@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mining_enchant:block/resist_strength_mob"
+    }
+  }
+}

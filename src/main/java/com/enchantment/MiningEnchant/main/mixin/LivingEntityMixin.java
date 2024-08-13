@@ -70,13 +70,10 @@ public abstract class LivingEntityMixin {
                 add((Attribute)ForgeMod.NAMETAG_DISTANCE.get()).
                 add((Attribute)ForgeMod.ENTITY_GRAVITY.get()).
                 add((Attribute)ForgeMod.STEP_HEIGHT_ADDITION.get()).
-                //add(Attributes.FOLLOW_RANGE).
                 add(Attributes.ATTACK_KNOCKBACK).
                 add(Attributes.ATTACK_DAMAGE).
                 add(Attributes.ATTACK_SPEED);
     }
-    /*@Inject(method = "defineSynchedData",at = @At(value = "HEAD"))
-    private void SynchedDate(CallbackInfo ci){
-        My().getEntityData().define(MiningEnchant.STRENGTH_MOB, false);
-    }*/
+
+
 }

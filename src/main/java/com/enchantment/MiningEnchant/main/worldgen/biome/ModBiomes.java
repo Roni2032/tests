@@ -37,9 +37,7 @@ public class ModBiomes {
         // モブのスポーンの設定
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        spawnBuilder.addSpawn(MobCategory.MONSTER,
-                new MobSpawnSettings.SpawnerData(
-                        EntityType.ZOMBIE, 100, 4, 4));
+        spawnMonster(spawnBuilder);
 
         // ヒツジなど
 //        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -63,7 +61,7 @@ public class ModBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
 
         // かぼちゃ、サトウキビ
-        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        //BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         // 呪われた木
        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                StrengthTreePlacement.STRENGTH_TREE);
@@ -91,5 +89,28 @@ public class ModBiomes {
                         .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_BADLANDS))
                         .build())
                 .build();
+    }
+
+    public static void spawnMonster(MobSpawnSettings.Builder spawnBuilder){
+        spawnBuilder.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(
+                        EntityType.ZOMBIE, 100, 4, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(
+                        EntityType.SKELETON, 100, 4, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(
+                        EntityType.SPIDER, 100, 4, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(
+                        EntityType.CREEPER, 100, 4, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(
+                        EntityType.ENDERMAN, 10, 4, 8));
+        spawnBuilder.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(
+                        EntityType.WITCH, 5, 4, 8));
+
+
     }
 }

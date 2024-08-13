@@ -10,6 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -28,7 +29,7 @@ public class MineAllEnchant extends Enchantment {
 
     private boolean isMiner = false;
     public MineAllEnchant() {
-        super(Rarity.RARE, ModEnchants.MINEALL_CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentCategory.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -41,12 +42,6 @@ public class MineAllEnchant extends Enchantment {
         return 3;
     }
 
-    @Override
-    public void doPostAttack(LivingEntity LivEntity, Entity entity, int p_44688_) {
-
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void mineBlock(BlockEvent.BreakEvent event){
 
         Player player = event.getPlayer();
@@ -66,7 +61,6 @@ public class MineAllEnchant extends Enchantment {
                 mineOre(world,eventBlockPos,eventBlockState);
             }
         }
-        if(enchantLevel >= 2){}
 
         if(enchantLevel >= 1) {
             if(mainHandItem.getItem() instanceof AxeItem){
@@ -94,7 +88,7 @@ public class MineAllEnchant extends Enchantment {
 
         posList = getAroundBlocks(posList,world,state,originPos,3,breakBlocks);
 
-        while (posList.size() != 0){
+        while (!posList.isEmpty()){
             BlockPos blockPos = posList.get(0);
 
             posList.remove(0);
@@ -139,7 +133,7 @@ public class MineAllEnchant extends Enchantment {
         blockPosList = getAroundBlocks(blockPosList,world,state,originPos);
         int destroyCount = 0;
         int maxDestroyBlocks = 100;
-        while(blockPosList.size() != 0)
+        while(!blockPosList.isEmpty())
         {
             BlockPos blockPos = blockPosList.get(0);
             int beforeListSize = blockPosList.size();

@@ -32,8 +32,17 @@ public class ExplodeCortingNuget extends Item {
     public InteractionResult useOn(UseOnContext context) {
         Vec3 vec = context.getClickLocation();
         Direction direction = context.getClickedFace();
-        BlockPos blockPos = new BlockPos((int)vec.x,(int)vec.y,(int)vec.z);
-        switch (direction){
+        BlockPos blockPos = getTargetedBlockPos(direction,vec);
+        
+        Level world = context.getLevel();
+        BlockState state = world.getBlockState(blockPos);
+        world.setBlock(blockPos, Blocks.END_STONE.defaultBlockState(),3);
+        return InteractionResult.PASS;
+    }
+
+    public BlockPos getTargetedBlockPos(Direction targetFace,Vec3 clickedPos){
+        BlockPos blockPos = new BlockPos((int)clickedPos.x,(int)clickedPos.y,(int)clickedPos.z);
+        switch (targetFace){
             case UP :
             case EAST :
             case SOUTH :
@@ -73,12 +82,8 @@ public class ExplodeCortingNuget extends Item {
                 }
                 break;
         }
-        Level world = context.getLevel();
-        //109,-59,-96
-        BlockState state = world.getBlockState(blockPos);
-        world.setBlock(blockPos, Blocks.END_STONE.defaultBlockState(),3);
-        return InteractionResult.PASS;
-    }
 
+        return blockPos;
+    }
 
 }
