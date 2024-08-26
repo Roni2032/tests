@@ -19,8 +19,8 @@ public class OverWorldRegion extends Region {
         super(name, RegionType.OVERWORLD, weight);
     }
 
-    @Override
-    public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
+
+    public void addedBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
         VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
         new ParameterUtils.ParameterPointListBuilder()
                 //生成される土地の種類(INLAND : 島 COAST : 海　等)

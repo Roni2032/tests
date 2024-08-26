@@ -8,18 +8,24 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 
+import java.util.List;
+
 
 public class StrengthTreeFeature {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> STRENGTH_TREE_KEY = createKey("strength_tree");
+    public static final ResourceKey<ConfiguredFeature<?,?>> MAGMA_ROCK_KEY = createKey("magma_rock");
 
     public static void bootStrap(BootstapContext<ConfiguredFeature<?,?>> context){
         FeatureUtils.register(context,STRENGTH_TREE_KEY,Feature.TREE,
@@ -33,6 +39,12 @@ public class StrengthTreeFeature {
                         new BlobFoliagePlacer(ConstantInt.of(4),ConstantInt.of(2),3),//形
                         new TwoLayersFeatureSize(1,0,2)).//木の生成に必要なスペース
                         build());
+
+        FeatureUtils.register(context,MAGMA_ROCK_KEY,Feature.FOREST_ROCK,
+                new BlockStateConfiguration(Blocks.MAGMA_BLOCK.defaultBlockState()));
+
+
+
     }
 
     public static ResourceKey<ConfiguredFeature<?,?>> createKey(String name){

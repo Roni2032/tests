@@ -86,7 +86,8 @@
       "minecraft:patch_large_fern",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "mining_enchant:strength_tree"
+      "mining_enchant:strength_tree",
+      "mining_enchant:magma_rock"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -104,44 +105,7 @@
       }
     ],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:zombie",
-        "maxCount": 8,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:skeleton",
-        "maxCount": 8,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:spider",
-        "maxCount": 8,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:creeper",
-        "maxCount": 8,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:enderman",
-        "maxCount": 8,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:witch",
-        "maxCount": 8,
-        "minCount": 4,
-        "weight": 5
-      }
-    ],
+    "creature": [],
     "misc": [],
     "monster": [
       {

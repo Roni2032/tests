@@ -11,13 +11,14 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.*;
 
 public class StrengthTreePlacement {
 
 
 
     public static ResourceKey<PlacedFeature> STRENGTH_TREE = createKey("strength_tree");
+    public static ResourceKey<PlacedFeature> MAGMA_ROCK = createKey("magma_rock");
 
     public static void bootStrap(BootstapContext<PlacedFeature> context){
         HolderGetter<ConfiguredFeature<?,?>> configuredFeature = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -27,6 +28,10 @@ public class StrengthTreePlacement {
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(10,0.1f,1),
                         //苗木の設定
                         ModBlocks.Blocks.STRENGTH_SAPLING.get()));
+
+        PlacementUtils.register(context,MAGMA_ROCK,
+                configuredFeature.getOrThrow(StrengthTreeFeature.MAGMA_ROCK_KEY),
+                new PlacementModifier[]{CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()});
     }
 
     public static ResourceKey<PlacedFeature> createKey(String name){

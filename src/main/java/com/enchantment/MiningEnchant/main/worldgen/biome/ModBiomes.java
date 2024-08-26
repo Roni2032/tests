@@ -6,6 +6,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Musics;
@@ -14,6 +16,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
+
+import javax.swing.*;
 
 public class ModBiomes {
     public static final ResourceKey<Biome> STRENGTH_FOREST = ResourceKey.create(Registries.BIOME,new ResourceLocation(MiningEnchant.MOD_ID,"strength_forest"));
@@ -36,8 +40,6 @@ public class ModBiomes {
     private static Biome strengthForest(BootstapContext<Biome> context) {
         // モブのスポーンの設定
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-
-        spawnMonster(spawnBuilder);
 
         // ヒツジなど
 //        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -66,6 +68,9 @@ public class ModBiomes {
        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                StrengthTreePlacement.STRENGTH_TREE);
 
+       biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+               StrengthTreePlacement.MAGMA_ROCK);
+
         return new Biome.BiomeBuilder()
                 // 雨が降るかどうか
                 .hasPrecipitation(true)
@@ -91,26 +96,6 @@ public class ModBiomes {
                 .build();
     }
 
-    public static void spawnMonster(MobSpawnSettings.Builder spawnBuilder){
-        spawnBuilder.addSpawn(MobCategory.CREATURE,
-                new MobSpawnSettings.SpawnerData(
-                        EntityType.ZOMBIE, 100, 4, 8));
-        spawnBuilder.addSpawn(MobCategory.CREATURE,
-                new MobSpawnSettings.SpawnerData(
-                        EntityType.SKELETON, 100, 4, 8));
-        spawnBuilder.addSpawn(MobCategory.CREATURE,
-                new MobSpawnSettings.SpawnerData(
-                        EntityType.SPIDER, 100, 4, 8));
-        spawnBuilder.addSpawn(MobCategory.CREATURE,
-                new MobSpawnSettings.SpawnerData(
-                        EntityType.CREEPER, 100, 4, 8));
-        spawnBuilder.addSpawn(MobCategory.CREATURE,
-                new MobSpawnSettings.SpawnerData(
-                        EntityType.ENDERMAN, 10, 4, 8));
-        spawnBuilder.addSpawn(MobCategory.CREATURE,
-                new MobSpawnSettings.SpawnerData(
-                        EntityType.WITCH, 5, 4, 8));
 
 
-    }
 }

@@ -14,4 +14,5 @@ public class ModEntites {
     public static final RegistryObject<EntityType<BossZombieEntity>> BOSS_ZOMBIE = ENTITY_TYPES.register("boss_zombie",()-> EntityType.Builder.of(BossZombieEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).build("boss_zombie"));
 
 
+
 }

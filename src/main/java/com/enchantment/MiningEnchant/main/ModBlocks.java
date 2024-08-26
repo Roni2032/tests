@@ -1,9 +1,6 @@
 package com.enchantment.MiningEnchant.main;
 
-import com.enchantment.MiningEnchant.main.Blocks.block.EnchantExtractBookBlock;
-import com.enchantment.MiningEnchant.main.Blocks.block.ResistStrengthMobBlock;
-import com.enchantment.MiningEnchant.main.Blocks.block.StrengthLeaves;
-import com.enchantment.MiningEnchant.main.Blocks.block.StrengthLog;
+import com.enchantment.MiningEnchant.main.Blocks.block.*;
 import com.enchantment.MiningEnchant.main.worldgen.Tree.StrengthTree;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -27,7 +24,10 @@ public class ModBlocks {
 
         public static final RegistryObject<Block> STRENGTH_SAPLING = BLOCKS.register((String)"strength_sapling",()->new SaplingBlock(new StrengthTree(), BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.OAK_SAPLING)));
 
-        public static final RegistryObject<Block> RESIST_STRENGTH_MOB_BLOCK = BLOCKS.register((String)"resist_strength_mob.json", ResistStrengthMobBlock::new);
+        public static final RegistryObject<Block> RESIST_STRENGTH_MOB_BLOCK = BLOCKS.register((String)"resist_strength_mob", ResistStrengthMobBlock::new);
+
+        public static final RegistryObject<Block> MOD_PORTAL = BLOCKS.register((String)"mod_portal",()->new PortalBlock(BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.STONE).noLootTable().noOcclusion().noCollission()));
+
     }
 
     public static class Items{
@@ -40,7 +40,10 @@ public class ModBlocks {
 
         public static final RegistryObject<Item> STRENGTH_SAPLING_ITEM = BLOCK_ITEMS.register((String)"strength_sapling",()->new BlockItem(Blocks.STRENGTH_SAPLING.get(),new Item.Properties()));
 
-        public static final RegistryObject<Item> RESIST_STRENGTH_MOB_ITEM = BLOCK_ITEMS.register((String)"resist_strength_mob.json",()->new BlockItem(Blocks.RESIST_STRENGTH_MOB_BLOCK.get(),new Item.Properties()));
+        public static final RegistryObject<Item> RESIST_STRENGTH_MOB_ITEM = BLOCK_ITEMS.register((String)"resist_strength_mob",()->new BlockItem(Blocks.RESIST_STRENGTH_MOB_BLOCK.get(),new Item.Properties()));
+
+        public static final RegistryObject<Item> MOD_PORTAL_ITEM = BLOCK_ITEMS.register((String)"mod_portal",()->new BlockItem(Blocks.MOD_PORTAL.get(),new Item.Properties()));
+
 
     }
 

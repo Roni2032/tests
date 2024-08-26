@@ -1,4 +1,8 @@
-// 1.20.1	2024-08-13T22:13:30.4223474	Registries
-f2a493852b3d92412eda111b0b532dbbfd1c7f94 data/mining_enchant/worldgen/biome/strength_forest.json
+// 1.20.1	2024-08-21T22:28:26.4376788	Registries
+ac7f966773755a5db5c74825a58c8f4540b5c40f data/mining_enchant/dimension/the_strength.json
+f40c74fad4e0c6f4b2d50b219e8bfbd851edd375 data/mining_enchant/dimension_type/the_strength_type.json
+7d3563672f11c9d67f7a923d538d50fc961c793a data/mining_enchant/worldgen/biome/strength_forest.json
+3a2537e8e9b38f11e3d1af60df6e9a87bbb79807 data/mining_enchant/worldgen/configured_feature/magma_rock.json
 6a19a20b9a52c1cd227dd0d9f7f379ed69ca2e48 data/mining_enchant/worldgen/configured_feature/strength_tree.json
+22dc5c8338378742aea8ed6789d8e77214cddc2d data/mining_enchant/worldgen/placed_feature/magma_rock.json
 a221c03e3faf4695745bb9e696ffb16ac5838be0 data/mining_enchant/worldgen/placed_feature/strength_tree.json

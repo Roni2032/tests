@@ -20,6 +20,7 @@ public class ModCreativeItems {
             ModBlocks.Items.STRENGTH_LEAVE_ITEM.get(),
             ModBlocks.Items.STRENGTH_SAPLING_ITEM.get(),
             ModItems.COATING_NUGET.get(),
-            ModBlocks.Items.RESIST_STRENGTH_MOB_ITEM.get()
+            ModBlocks.Items.RESIST_STRENGTH_MOB_ITEM.get(),
+            ModBlocks.Items.MOD_PORTAL_ITEM.get()
     };
 }

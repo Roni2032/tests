@@ -1,12 +1,12 @@
 package com.enchantment.MiningEnchant.main.Enchant;
 
 import com.enchantment.MiningEnchant.main.ModEnchants;
+import com.google.gson.JsonObject;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -14,15 +14,16 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.json.*;
+import java.util.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MineAllEnchant extends Enchantment {
@@ -46,6 +47,8 @@ public class MineAllEnchant extends Enchantment {
 
         Player player = event.getPlayer();
         ItemStack mainHandItem = player.getMainHandItem();
+
+
         int enchantLevel = mainHandItem.getEnchantmentLevel(ModEnchants.MINE_ENCHANT.get());
         if(enchantLevel == 0) return;
 
@@ -58,7 +61,7 @@ public class MineAllEnchant extends Enchantment {
 
         if(enchantLevel == 3) {
             if(eventBlockState.getBlock().getDescriptionId().matches(".*ore*.")){
-                mineOre(world,eventBlockPos,eventBlockState);
+                mineOre(world,eventBlockPos,eventBlockState,player);
             }
         }
 
@@ -72,7 +75,7 @@ public class MineAllEnchant extends Enchantment {
     }
 
 
-    public static void minePlank(Level world,BlockPos originPos,BlockState state,Player player,int level){
+    public void minePlank(Level world,BlockPos originPos,BlockState state,Player player,int level){
         List<BlockPos> posList = new ArrayList<>();
         Block[] breakBlocks = {
                 Blocks.OAK_LEAVES,
@@ -94,12 +97,14 @@ public class MineAllEnchant extends Enchantment {
             posList.remove(0);
             boolean isLeaf = false;
             if(blockPos.getX() != originPos.getX() || blockPos.getZ() != originPos.getZ()) isLeaf = true;
-            world.destroyBlock(blockPos,true);
+
+            //world.destroyBlock(blockPos,true);
+            destroyBlock(blockPos,world,player);
             if(isLeaf) continue;
             posList = getAroundBlocks(posList,world,state,blockPos,3 + (2 * level),breakBlocks);
         }
     }
-    public static void mineStone(Level world,BlockPos originPos,BlockState state,Player player,int level){
+    public void mineStone(Level world,BlockPos originPos,BlockState state,Player player,int level){
 
         Vec3 vec = player.getForward();
         double rad = Math.atan2(vec.z,vec.x);
@@ -123,12 +128,13 @@ public class MineAllEnchant extends Enchantment {
 
                     if(world.getBlockState(pos) != state) continue;
 
-                    world.destroyBlock(pos,true);
+                    //world.destroyBlock(pos,true);
+                    destroyBlock(pos,world,player);
                 }
             }
         }
     }
-    public static void mineOre(Level world,BlockPos originPos,BlockState state){
+    public void mineOre(Level world,BlockPos originPos,BlockState state,Player player){
         List<BlockPos> blockPosList = new ArrayList<>();
         blockPosList = getAroundBlocks(blockPosList,world,state,originPos);
         int destroyCount = 0;
@@ -137,7 +143,8 @@ public class MineAllEnchant extends Enchantment {
         {
             BlockPos blockPos = blockPosList.get(0);
             int beforeListSize = blockPosList.size();
-            world.destroyBlock(blockPos, true);
+            //world.destroyBlock(blockPos, true);
+            destroyBlock(blockPos,world,player);
 
             blockPosList.remove(0);
             if(destroyCount > maxDestroyBlocks) continue;
@@ -149,6 +156,24 @@ public class MineAllEnchant extends Enchantment {
         }
     }
 
+    public void destroyBlock(BlockPos blockPos,Level world,Player player){
+        BlockState destroyBlockState = world.getBlockState(blockPos);
+        BlockEntity blockentity = destroyBlockState.hasBlockEntity() ? world.getBlockEntity(blockPos) : null;
+        var dropList = destroyBlockState.getBlock().getDrops(destroyBlockState,(ServerLevel)world,blockPos,blockentity);
+        boolean canGetInventory = true;
+        for(var drop : dropList){
+            if(!player.getInventory().add(drop)){
+                canGetInventory = false;
+                break;
+            }
+        }
+        if(canGetInventory){
+            world.destroyBlock(blockPos,false);
+        }else{
+            world.destroyBlock(blockPos,true);
+        }
+
+    }
     public static List<BlockPos> getAroundBlocks(List<BlockPos> list,Level world,BlockState state,BlockPos centerPos){
         BlockPos[] checkList = {
                 centerPos.above(),
@@ -167,7 +192,7 @@ public class MineAllEnchant extends Enchantment {
         return list;
     }
 
-    public static List<BlockPos> getAroundBlocks(List<BlockPos> list,Level world,BlockState state,BlockPos centerPos,int size,Block[] blocks) {
+    public List<BlockPos> getAroundBlocks(List<BlockPos> list,Level world,BlockState state,BlockPos centerPos,int size,Block[] blocks) {
         List<BlockPos> checkList = new ArrayList<>();
         for (int z = -size / 2; z <= size / 2; z++) {
             for (int x = -size / 2; x <= size / 2; x++) {
@@ -192,7 +217,7 @@ public class MineAllEnchant extends Enchantment {
         }
         return list;
     }
-    public static boolean checkBlockTag(ItemStack itemStack, BlockState state){
+    public boolean checkBlockTag(ItemStack itemStack, BlockState state){
 
         Item item = itemStack.getItem();
         if(item instanceof PickaxeItem){
