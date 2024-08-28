@@ -56,7 +56,7 @@ public class ModDimensions {
         //一つのバイオームだけを生成したいときに使う
         NoiseBasedChunkGenerator chunkGen = new NoiseBasedChunkGenerator(
                 new FixedBiomeSource(biomeRegistry.getOrThrow(ModBiomes.STRENGTH_FOREST)),
-                        noiseGenSetting.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
+                        noiseGenSetting.getOrThrow(DIMENSION_NOISE));
 
         //複数のバイオームを生成したいときに使う
         NoiseBasedChunkGenerator noiseBasedChunkGen = new NoiseBasedChunkGenerator(
