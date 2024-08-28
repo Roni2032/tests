@@ -18,6 +18,7 @@ import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.*;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
 import java.util.OptionalLong;
@@ -42,7 +43,7 @@ public class ModDimensions {
                 256,//ポータルなどで移動可能な高さの最大
                 BlockTags.INFINIBURN_OVERWORLD,
                 BuiltinDimensionTypes.OVERWORLD_EFFECTS,
-                0.5f,//ディメンションの光量
+                0.2f,//ディメンションの光量
                 new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
         ));
     }
@@ -66,11 +67,26 @@ public class ModDimensions {
                                 Pair.of(
                                         Climate.parameters(0.2f,0.3f,0.2f,0.1f,0.0f,0.0f,0.0f),biomeRegistry.getOrThrow(Biomes.DEEP_DARK))
                                                 ))),
-                noiseGenSetting.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
+                noiseGenSetting.getOrThrow(DIMENSION_NOISE));
 
         LevelStem stem = new LevelStem(dimType.getOrThrow(ModDimensions.DIM_TYPE_KEY),noiseBasedChunkGen);
 
         context.register(DIM_KEY,stem);
     }
 
+
+    public static ResourceKey<NoiseGeneratorSettings> DIMENSION_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS,new ResourceLocation(MiningEnchant.MOD_ID, "path"));
+    public static void bootStrapNoise(BootstapContext<NoiseGeneratorSettings> context){
+        HolderGetter<DensityFunction> densityFunction = context.lookup(Registries.DENSITY_FUNCTION);
+        HolderGetter<NormalNoise.NoiseParameters> noise = context.lookup(Registries.NOISE);
+
+        context.register(DIMENSION_NOISE,noiseSettings(densityFunction,noise));
+    }
+
+    public static NoiseGeneratorSettings noiseSettings(HolderGetter<DensityFunction> density,HolderGetter<NormalNoise.NoiseParameters> noise){
+
+        SurfaceRules.RuleSource bottomBedrock = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_bottom", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(4)), SurfaceRules.state(Blocks.BEDROCK.defaultBlockState()));
+
+        return null;
+    }
 }
