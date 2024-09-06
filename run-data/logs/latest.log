@@ -1,60 +1,62 @@
-[288月2024 10:44:30.068] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\hmuna\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, mining_enchant, --all, --output, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\generated\resources, --existing, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\main\resources, --mixin.config, mixins.mining_enchant.json]
-[288月2024 10:44:30.072] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.3 by Amazon.com Inc.; OS Windows 11 arch amd64 version 10.0
-[288月2024 10:44:30.170] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[288月2024 10:44:30.210] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/hmuna/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[288月2024 10:44:30.526] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.0\d7ebc62120f202109e300e084ca1a31a7b946a62\javafmllanguage-1.20.1-47.3.0.jar is missing mods.toml file
-[288月2024 10:44:30.530] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.0\1bf3e845ea0ce750096da8c71c8364b188ab74d4\lowcodelanguage-1.20.1-47.3.0.jar is missing mods.toml file
-[288月2024 10:44:30.532] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.0\6093682e943ddccbabf70539319d7f2fe64db2e7\mclanguage-1.20.1-47.3.0.jar is missing mods.toml file
-[288月2024 10:44:30.534] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.0\3b6be96aba3e323f3c918e8ef6a96312d82d76ad\fmlcore-1.20.1-47.3.0.jar is missing mods.toml file
-[288月2024 10:44:30.602] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[288月2024 10:44:31.607] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by mixins.mining_enchant.json is higher than the maximum level supported by this version of mixin (JAVA_13).
-[288月2024 10:44:31.607] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[288月2024 10:44:31.607] [main/ERROR] [mixin/]: Mixin config mixins.mining_enchant.json does not specify "minVersion" property
-[288月2024 10:44:31.615] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\hmuna\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, mining_enchant, --all, --output, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\generated\resources, --existing, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\main\resources]
-[288月2024 10:44:31.672] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
-[288月2024 10:44:31.673] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. NoClassDefFoundError: org/jetbrains/java/decompiler/main/extern/IResultSaver
-[288月2024 10:44:31.689] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
-[288月2024 10:44:31.689] [main/INFO] [mixin/]: Selecting config mixins.mining_enchant.json
-[288月2024 10:44:31.692] [main/WARN] [mixin/]: Reference map 'mixins.mining_enchant.refmap.json' for mixins.mining_enchant.json could not be read. If this is a development environment you can ignore this message
-[288月2024 10:44:31.693] [main/INFO] [mixin/]: Selecting config terrablender.mixins.json
-[288月2024 10:44:31.926] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\build\createSrgToMcp\output.srg
-[288月2024 10:44:31.927] [main/INFO] [mixin/]: Selecting config terrablender_forge.mixins.json
-[288月2024 10:44:31.928] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\build\createSrgToMcp\output.srg
-[288月2024 10:44:31.928] [main/INFO] [mixin/]: Preparing mixins.mining_enchant.json (17)
-[288月2024 10:44:32.148] [main/INFO] [mixin/]: Preparing terrablender.mixins.json (7)
-[288月2024 10:44:32.165] [main/INFO] [mixin/]: Preparing terrablender_forge.mixins.json (0)
-[288月2024 10:44:32.200] [main/INFO] [mixin/]: Prepared 24 mixins in 0.511 sec (21.3ms avg) (0ms load, 0ms transform, 0ms plugin)
-[288月2024 10:44:32.418] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [mining_enchant]
-[288月2024 10:44:32.425] [main/INFO] [mixin/]: Mixing MixinBuiltInRegistries from terrablender.mixins.json into net.minecraft.core.registries.BuiltInRegistries
-[288月2024 10:44:32.429] [main/INFO] [mixin/]: Renaming synthetic method lambda$registerSimple$0(Lnet/minecraft/core/registries/BuiltInRegistries$RegistryBootstrap;Lnet/minecraft/core/Registry;)Ljava/lang/Object; to md78a577$lambda$registerSimple$0$0 in terrablender.mixins.json:MixinBuiltInRegistries
-[288月2024 10:44:32.589] [main/INFO] [mixin/]: Mixing LivingEntityMixin from mixins.mining_enchant.json into net.minecraft.world.entity.LivingEntity
-[288月2024 10:44:33.332] [main/INFO] [mixin/]: Mixing Attribute.AccecerAttributeRange from mixins.mining_enchant.json into net.minecraft.world.entity.ai.attributes.RangedAttribute
-[288月2024 10:44:33.524] [main/INFO] [mixin/]: Mixing BossEntityBase from mixins.mining_enchant.json into net.minecraft.world.entity.Mob
-[288月2024 10:44:34.624] [main/INFO] [mixin/]: Mixing Mobs.ModdingSpider from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Spider
-[288月2024 10:44:34.648] [main/INFO] [mixin/]: Mixing Mobs.ModdingSkeletonMob from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Skeleton
-[288月2024 10:44:34.702] [main/INFO] [mixin/]: Mixing Mobs.ModdingSkeleton from mixins.mining_enchant.json into net.minecraft.world.entity.monster.AbstractSkeleton
-[288月2024 10:44:34.702] [main/INFO] [mixin/]: Renaming synthetic method lambda$performRangedAttack$0(Lnet/minecraft/world/item/Item;)Z to md78a577$lambda$performRangedAttack$0$0 in mixins.mining_enchant.json:Mobs.ModdingSkeleton
-[288月2024 10:44:34.758] [main/INFO] [mixin/]: Mixing Mobs.ModdingCreeper from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Creeper
-[288月2024 10:44:34.783] [main/WARN] [mixin/]: @Final field DATA_IS_IGNITED:Lnet/minecraft/network/syncher/EntityDataAccessor; in mixins.mining_enchant.json:Mobs.ModdingCreeper should be final
-[288月2024 10:44:34.798] [main/INFO] [mixin/]: Mixing Boss.EnderDragon.BossDragonFireBall from mixins.mining_enchant.json into net.minecraft.world.entity.projectile.DragonFireball
-[288月2024 10:44:34.859] [main/INFO] [mixin/]: Mixing Mobs.ModdingZombie from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Zombie
-[288月2024 10:44:34.914] [main/INFO] [mixin/]: Mixing Boss.EnderDragon.BossEnderDragon from mixins.mining_enchant.json into net.minecraft.world.entity.boss.enderdragon.EnderDragon
-[288月2024 10:44:35.390] [main/INFO] [mixin/]: Mixing Enchants.NewProtectedEnchantment from mixins.mining_enchant.json into net.minecraft.world.item.enchantment.ProtectionEnchantment
-[288月2024 10:44:35.396] [main/INFO] [mixin/]: Mixing Enchants.NewDamegeEnchantment from mixins.mining_enchant.json into net.minecraft.world.item.enchantment.DamageEnchantment
-[288月2024 10:44:35.399] [main/INFO] [mixin/]: Mixing Enchants.LootBonusMixin from mixins.mining_enchant.json into net.minecraft.world.item.enchantment.LootBonusEnchantment
-[288月2024 10:44:35.968] [main/INFO] [mixin/]: Mixing MixinBiomeSource from terrablender.mixins.json into net.minecraft.world.level.biome.BiomeSource
-[288月2024 10:44:35.969] [main/INFO] [mixin/]: Renaming synthetic method lambda$appendDeferredBiomesList$0(Lcom/google/common/collect/ImmutableList;)Ljava/util/Set; to md78a577$lambda$appendDeferredBiomesList$0$0 in terrablender.mixins.json:MixinBiomeSource
-[288月2024 10:44:36.013] [main/INFO] [mixin/]: Mixing MixinMultiNoiseBiomeSource from terrablender.mixins.json into net.minecraft.world.level.biome.MultiNoiseBiomeSource
-[288月2024 10:44:36.025] [main/INFO] [mixin/]: Mixing MixinParameterList from terrablender.mixins.json into net.minecraft.world.level.biome.Climate$ParameterList
-[288月2024 10:44:36.025] [main/INFO] [mixin/]: Renaming synthetic method lambda$initializeForTerraBlender$0(Lnet/minecraft/core/Registry;Lcom/google/common/collect/ImmutableList$Builder;Lcom/mojang/datafixers/util/Pair;)V to md78a577$lambda$initializeForTerraBlender$0$0 in terrablender.mixins.json:MixinParameterList
-[288月2024 10:44:36.059] [main/INFO] [mixin/]: Mixing MixinNoiseGeneratorSettings from terrablender.mixins.json into net.minecraft.world.level.levelgen.NoiseGeneratorSettings
-[288月2024 10:44:36.060] [main/WARN] [mixin/]: @Shadow target terrablender.mixins.json:MixinNoiseGeneratorSettings::surfaceRule is final but shadow is not decorated with @Final
-[288月2024 10:44:36.283] [modloading-worker-0/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.Mob from class com.enchantment.MiningEnchant.main.MiningEnchant
-[288月2024 10:44:36.314] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.0, for MC 1.20.1 with MCP 20230612.114412
-[288月2024 10:44:36.315] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.0 Initialized
-[288月2024 10:44:36.743] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/hmuna/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.0_mapped_official_1.20.1/forge-1.20.1-47.3.0_mapped_official_1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[288月2024 10:44:36.743] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/hmuna/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.0_mapped_official_1.20.1/forge-1.20.1-47.3.0_mapped_official_1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[288月2024 10:44:36.893] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[288月2024 10:44:37.095] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 202 ms
-[288月2024 10:44:37.095] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 203 ms
-[288月2024 10:44:37.101] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 7, old count: 7, new count: 8, removed stale: 0, written: 1
+[318月2024 10:41:36.167] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\hmuna\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, mining_enchant, --all, --output, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\generated\resources, --existing, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\main\resources, --mixin.config, mixins.mining_enchant.json]
+[318月2024 10:41:36.171] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.3 by Amazon.com Inc.; OS Windows 11 arch amd64 version 10.0
+[318月2024 10:41:36.266] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[318月2024 10:41:36.306] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/hmuna/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[318月2024 10:41:36.601] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.0\d7ebc62120f202109e300e084ca1a31a7b946a62\javafmllanguage-1.20.1-47.3.0.jar is missing mods.toml file
+[318月2024 10:41:36.604] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.0\1bf3e845ea0ce750096da8c71c8364b188ab74d4\lowcodelanguage-1.20.1-47.3.0.jar is missing mods.toml file
+[318月2024 10:41:36.607] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.0\6093682e943ddccbabf70539319d7f2fe64db2e7\mclanguage-1.20.1-47.3.0.jar is missing mods.toml file
+[318月2024 10:41:36.610] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\hmuna\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.0\3b6be96aba3e323f3c918e8ef6a96312d82d76ad\fmlcore-1.20.1-47.3.0.jar is missing mods.toml file
+[318月2024 10:41:36.689] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[318月2024 10:41:37.744] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by mixins.mining_enchant.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[318月2024 10:41:37.744] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[318月2024 10:41:37.745] [main/ERROR] [mixin/]: Mixin config mixins.mining_enchant.json does not specify "minVersion" property
+[318月2024 10:41:37.750] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\hmuna\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, mining_enchant, --all, --output, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\generated\resources, --existing, C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\src\main\resources]
+[318月2024 10:41:37.805] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
+[318月2024 10:41:37.806] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. NoClassDefFoundError: org/jetbrains/java/decompiler/main/extern/IResultSaver
+[318月2024 10:41:37.822] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[318月2024 10:41:37.822] [main/INFO] [mixin/]: Selecting config mixins.mining_enchant.json
+[318月2024 10:41:37.825] [main/WARN] [mixin/]: Reference map 'mixins.mining_enchant.refmap.json' for mixins.mining_enchant.json could not be read. If this is a development environment you can ignore this message
+[318月2024 10:41:37.825] [main/INFO] [mixin/]: Selecting config terrablender.mixins.json
+[318月2024 10:41:37.999] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\build\createSrgToMcp\output.srg
+[318月2024 10:41:37.999] [main/INFO] [mixin/]: Selecting config terrablender_forge.mixins.json
+[318月2024 10:41:38.001] [main/INFO] [mixin/]: Remapping refMap terrablender.refmap.json using C:\Users\hmuna\OneDrive\デスクトップ\Minecraft Mod\miningEnchant\build\createSrgToMcp\output.srg
+[318月2024 10:41:38.001] [main/INFO] [mixin/]: Preparing mixins.mining_enchant.json (17)
+[318月2024 10:41:38.288] [main/INFO] [mixin/]: Preparing terrablender.mixins.json (7)
+[318月2024 10:41:38.307] [main/INFO] [mixin/]: Preparing terrablender_forge.mixins.json (0)
+[318月2024 10:41:38.348] [main/INFO] [mixin/]: Prepared 24 mixins in 0.526 sec (21.9ms avg) (0ms load, 0ms transform, 0ms plugin)
+[318月2024 10:41:38.573] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [mining_enchant]
+[318月2024 10:41:38.583] [main/INFO] [mixin/]: Mixing MixinBuiltInRegistries from terrablender.mixins.json into net.minecraft.core.registries.BuiltInRegistries
+[318月2024 10:41:38.586] [main/INFO] [mixin/]: Renaming synthetic method lambda$registerSimple$0(Lnet/minecraft/core/registries/BuiltInRegistries$RegistryBootstrap;Lnet/minecraft/core/Registry;)Ljava/lang/Object; to md632cf6$lambda$registerSimple$0$0 in terrablender.mixins.json:MixinBuiltInRegistries
+[318月2024 10:41:38.772] [main/INFO] [mixin/]: Mixing LivingEntityMixin from mixins.mining_enchant.json into net.minecraft.world.entity.LivingEntity
+[318月2024 10:41:39.514] [main/INFO] [mixin/]: Mixing Attribute.AccecerAttributeRange from mixins.mining_enchant.json into net.minecraft.world.entity.ai.attributes.RangedAttribute
+[318月2024 10:41:39.691] [main/INFO] [mixin/]: Mixing BossEntityBase from mixins.mining_enchant.json into net.minecraft.world.entity.Mob
+[318月2024 10:41:40.729] [main/INFO] [mixin/]: Mixing Mobs.ModdingSpider from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Spider
+[318月2024 10:41:40.747] [main/INFO] [mixin/]: Mixing Mobs.ModdingSkeletonMob from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Skeleton
+[318月2024 10:41:40.782] [main/INFO] [mixin/]: Mixing Mobs.ModdingSkeleton from mixins.mining_enchant.json into net.minecraft.world.entity.monster.AbstractSkeleton
+[318月2024 10:41:40.784] [main/INFO] [mixin/]: Renaming synthetic method lambda$performRangedAttack$0(Lnet/minecraft/world/item/Item;)Z to md632cf6$lambda$performRangedAttack$0$0 in mixins.mining_enchant.json:Mobs.ModdingSkeleton
+[318月2024 10:41:40.835] [main/INFO] [mixin/]: Mixing Mobs.ModdingCreeper from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Creeper
+[318月2024 10:41:40.867] [main/WARN] [mixin/]: @Final field DATA_IS_IGNITED:Lnet/minecraft/network/syncher/EntityDataAccessor; in mixins.mining_enchant.json:Mobs.ModdingCreeper should be final
+[318月2024 10:41:40.879] [main/INFO] [mixin/]: Mixing Boss.EnderDragon.BossDragonFireBall from mixins.mining_enchant.json into net.minecraft.world.entity.projectile.DragonFireball
+[318月2024 10:41:40.918] [main/INFO] [mixin/]: Mixing Mobs.ModdingZombie from mixins.mining_enchant.json into net.minecraft.world.entity.monster.Zombie
+[318月2024 10:41:40.955] [main/INFO] [mixin/]: Mixing Boss.EnderDragon.BossEnderDragon from mixins.mining_enchant.json into net.minecraft.world.entity.boss.enderdragon.EnderDragon
+[318月2024 10:41:41.872] [main/INFO] [mixin/]: Mixing Enchants.NewProtectedEnchantment from mixins.mining_enchant.json into net.minecraft.world.item.enchantment.ProtectionEnchantment
+[318月2024 10:41:41.913] [main/INFO] [mixin/]: Mixing Enchants.NewDamegeEnchantment from mixins.mining_enchant.json into net.minecraft.world.item.enchantment.DamageEnchantment
+[318月2024 10:41:41.916] [main/INFO] [mixin/]: Mixing Enchants.LootBonusMixin from mixins.mining_enchant.json into net.minecraft.world.item.enchantment.LootBonusEnchantment
+[318月2024 10:41:42.572] [main/INFO] [mixin/]: Mixing MixinBiomeSource from terrablender.mixins.json into net.minecraft.world.level.biome.BiomeSource
+[318月2024 10:41:42.572] [main/INFO] [mixin/]: Renaming synthetic method lambda$appendDeferredBiomesList$0(Lcom/google/common/collect/ImmutableList;)Ljava/util/Set; to md632cf6$lambda$appendDeferredBiomesList$0$0 in terrablender.mixins.json:MixinBiomeSource
+[318月2024 10:41:42.614] [main/INFO] [mixin/]: Mixing MixinMultiNoiseBiomeSource from terrablender.mixins.json into net.minecraft.world.level.biome.MultiNoiseBiomeSource
+[318月2024 10:41:42.625] [main/INFO] [mixin/]: Mixing MixinParameterList from terrablender.mixins.json into net.minecraft.world.level.biome.Climate$ParameterList
+[318月2024 10:41:42.626] [main/INFO] [mixin/]: Renaming synthetic method lambda$initializeForTerraBlender$0(Lnet/minecraft/core/Registry;Lcom/google/common/collect/ImmutableList$Builder;Lcom/mojang/datafixers/util/Pair;)V to md632cf6$lambda$initializeForTerraBlender$0$0 in terrablender.mixins.json:MixinParameterList
+[318月2024 10:41:42.656] [main/INFO] [mixin/]: Mixing MixinNoiseGeneratorSettings from terrablender.mixins.json into net.minecraft.world.level.levelgen.NoiseGeneratorSettings
+[318月2024 10:41:42.657] [main/WARN] [mixin/]: @Shadow target terrablender.mixins.json:MixinNoiseGeneratorSettings::surfaceRule is final but shadow is not decorated with @Final
+[318月2024 10:41:42.858] [modloading-worker-0/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.Mob from class com.enchantment.MiningEnchant.main.MiningEnchant
+[318月2024 10:41:42.878] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.0, for MC 1.20.1 with MCP 20230612.114412
+[318月2024 10:41:42.879] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.0 Initialized
+[318月2024 10:41:43.283] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/hmuna/OneDrive/デスクトップ/Minecraft%20Mod/miningEnchant/build/fg_cache/net/minecraftforge/forge/1.20.1-47.3.0_mapped_official_1.20.1/forge-1.20.1-47.3.0_mapped_official_1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[318月2024 10:41:43.284] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/hmuna/OneDrive/デスクトップ/Minecraft%20Mod/miningEnchant/build/fg_cache/net/minecraftforge/forge/1.20.1-47.3.0_mapped_official_1.20.1/forge-1.20.1-47.3.0_mapped_official_1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[318月2024 10:41:43.391] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[318月2024 10:41:43.581] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 189 ms
+[318月2024 10:41:43.582] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id mining_enchant
+[318月2024 10:41:43.592] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id mining_enchant finished after 10 ms
+[318月2024 10:41:43.592] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 201 ms
+[318月2024 10:41:43.596] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 9, old count: 9, new count: 10, removed stale: 0, written: 0

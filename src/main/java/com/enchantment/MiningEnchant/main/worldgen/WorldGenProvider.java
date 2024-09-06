@@ -11,6 +11,7 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -20,6 +21,7 @@ public class WorldGenProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.CONFIGURED_FEATURE, StrengthTreeFeature::bootStrap)
             .add(Registries.PLACED_FEATURE, StrengthTreePlacement::bootStrap)
             .add(Registries.BIOME, ModBiomes::bootStrap)
+            .add(Registries.NOISE_SETTINGS, ModDimensions::bootStrapNoise)
             .add(Registries.DIMENSION_TYPE, ModDimensions::bootStrapType)
             .add(Registries.LEVEL_STEM,ModDimensions::boostStrapStem);
 

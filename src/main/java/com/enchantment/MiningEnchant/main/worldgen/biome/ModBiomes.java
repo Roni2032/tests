@@ -37,6 +37,7 @@ public class ModBiomes {
         context.register(STRENGTH_FOREST,strengthForest(context));
     }
 
+    //すべてのブロックが爆発耐性を持つ森。爆発に関連するmobがわく
     private static Biome strengthForest(BootstapContext<Biome> context) {
         // モブのスポーンの設定
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
@@ -68,9 +69,6 @@ public class ModBiomes {
        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                StrengthTreePlacement.STRENGTH_TREE);
 
-       biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-               StrengthTreePlacement.MAGMA_ROCK);
-
         return new Biome.BiomeBuilder()
                 // 雨が降るかどうか
                 .hasPrecipitation(true)
@@ -96,6 +94,17 @@ public class ModBiomes {
                 .build();
     }
 
+    //炎に包まれたデルタ地帯。ネザーのデルタの強化版のような場所。炎に関連するmobがわく
+    private static Biome fireDelta(BootstapContext<Biome> context){
+        return null;
+    }
+    //氷に包まれたジャングル。常に移動速度低下が付与される。氷に関連するmobがわく。
+    private static Biome frostJungle(BootstapContext<Biome> context){
+        return null;
+    }
 
-
+    //アンデットがはびこる森。アンデットのみがわく。
+    private static Biome undeadForest(BootstapContext<Biome> context){
+        return null;
+    }
 }

@@ -27,5 +27,7 @@ public class DataGenerater {
         // WorldGen
         generator.addProvider(event.includeServer(),
                 new WorldGenProvider(packOutput, lookUpProvider));
+
+        generator.addProvider(event.includeServer(),new BlockTagsGenerater(packOutput,lookUpProvider,existingFileHelper));
     }
 }

@@ -1,9 +1,11 @@
 package com.enchantment.MiningEnchant.main.worldgen.dimensions;
 
 import com.enchantment.MiningEnchant.main.MiningEnchant;
+import com.enchantment.MiningEnchant.main.ModBlocks;
 import com.enchantment.MiningEnchant.main.worldgen.Rules.SurfaceRuleData;
 import com.enchantment.MiningEnchant.main.worldgen.biome.ModBiomes;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -14,10 +16,12 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.*;
+import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
@@ -63,9 +67,7 @@ public class ModDimensions {
                 MultiNoiseBiomeSource.createFromList(
                         new Climate.ParameterList<>(List.of(
                                 Pair.of(
-                                        Climate.parameters(0.1f,0.0f,0.0f,0.0f,0.0f,0.0f,0.0f),biomeRegistry.getOrThrow(ModBiomes.STRENGTH_FOREST)),
-                                Pair.of(
-                                        Climate.parameters(0.2f,0.3f,0.2f,0.1f,0.0f,0.0f,0.0f),biomeRegistry.getOrThrow(Biomes.DEEP_DARK))
+                                        Climate.parameters(0.1f,0.0f,0.0f,0.0f,0.0f,0.0f,0.0f),biomeRegistry.getOrThrow(ModBiomes.STRENGTH_FOREST))
                                                 ))),
                 noiseGenSetting.getOrThrow(DIMENSION_NOISE));
 
@@ -85,8 +87,29 @@ public class ModDimensions {
 
     public static NoiseGeneratorSettings noiseSettings(HolderGetter<DensityFunction> density,HolderGetter<NormalNoise.NoiseParameters> noise){
 
+        //岩盤
         SurfaceRules.RuleSource bottomBedrock = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_bottom", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(4)), SurfaceRules.state(Blocks.BEDROCK.defaultBlockState()));
+        //表面
+        SurfaceRules.RuleSource echoSoilLayer = SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.STRENGTH_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.state(ModBlocks.Blocks.STRENGTH_SOIL.get().defaultBlockState())));
 
-        return null;
+        SurfaceRules.RuleSource biomeSurfaceLayer = SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR), SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.STRENGTH_FOREST), SurfaceRules.state(Blocks.ACACIA_LOG.defaultBlockState())),
+                                SurfaceRules.state(Blocks.SCULK.defaultBlockState())
+        ));
+        SurfaceRules.RuleSource deepslateFloor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(12)), SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState().setValue(BlockStateProperties.AXIS,Direction.Axis.Y)));
+        SurfaceRules.RuleSource deepslateRoof = SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("deepslate_roof", VerticalAnchor.belowTop(12), VerticalAnchor.top())), SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y)));
+
+
+        return new NoiseGeneratorSettings(NoiseSettings.create(0, 128, 1, 2),
+                Blocks.DEEPSLATE.defaultBlockState(),
+                Blocks.WATER.defaultBlockState(),
+                NoiseRouterData.overworld(density,noise,false,true),//DimensionNoiseRouter.strength(density,noise),
+                SurfaceRules.sequence(bottomBedrock,echoSoilLayer,biomeSurfaceLayer,deepslateFloor,deepslateRoof),
+                List.of(),
+                17,
+                false,
+                false,
+                true,
+                false);
     }
 }

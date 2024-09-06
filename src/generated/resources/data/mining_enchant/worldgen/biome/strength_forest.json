@@ -86,8 +86,7 @@
       "minecraft:patch_large_fern",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "mining_enchant:strength_tree",
-      "mining_enchant:magma_rock"
+      "mining_enchant:strength_tree"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -1,0 +1,25 @@
+
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "mining_enchant:block/strength_soil"
+      },
+      {
+        "model": "mining_enchant:block/strength_soil",
+        "y": 90
+      },
+      {
+        "model": "mining_enchant:block/strength_soil",
+        "y": 180
+      },
+      {
+        "model": "mining_enchant:block/strength_soil",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "minecraft:block/grass_block_snow"
+    }
+  }
+}
